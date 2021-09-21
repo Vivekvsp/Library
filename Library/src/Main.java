@@ -68,6 +68,8 @@ public class Main {
 				System.out.println("Enter the student Id to update :");
 				int userId =Integer.parseInt(br.readLine());
 				
+				
+				
 				System.out.println("Enter user name :");
 				String name=br.readLine(); 
 				
@@ -77,7 +79,9 @@ public class Main {
 				System.out.println("Enter user city :");
 				String city=br.readLine();
 				
-				Student v=new Student(name, phone, city);
+				
+				
+				Student v=new Student( userId,name, phone, city);
 				boolean t=StudentDao.updateStudent(v);
 				
 				if(t) {

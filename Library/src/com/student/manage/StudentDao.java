@@ -87,14 +87,14 @@ public class StudentDao {
 		try {
 			//jdbc code....
 			Connection con=CP.createC();
-			String q="update students set sname=? , sphone=? , scity=? , where sid=?";
+			String q="update students set sname=? , sphone=? , scity=?  where sid=?";
 			//preparedStatement
 			PreparedStatement pstmt=con.prepareStatement(q);
 			//set the values parameters
 			pstmt.setString(1, v.getStudentName());
 			pstmt.setString(2, v.getStuedentPhone());
 			pstmt.setNString(3, v.getStudentCity());
-			pstmt.setInt(1, v.getStudentId());
+			pstmt.setInt(4, v.getStudentId());
 			
 			//execute
 			pstmt.executeUpdate();
