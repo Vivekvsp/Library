@@ -1,9 +1,12 @@
-package com.student.manage;
+package com.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+import com.connect.CP;
+import com.model.Student;
 
 public class StudentDao {
 	

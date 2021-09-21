@@ -1,11 +1,12 @@
-//package com.student.manage;
+package com.controller;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import com.student.manage.Student;
-import com.student.manage.StudentDao;
+import com.dao.StudentDao;
+import com.model.Student;
 
 public class Main {
 

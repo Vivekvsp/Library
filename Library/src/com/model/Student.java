@@ -1,4 +1,5 @@
-package com.student.manage;
+package com.model;
+
 
 public class Student {
 	private int studentId;
