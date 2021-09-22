@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import com.dao.BookDao;
 import com.dao.UserDao;
 import com.model.Book;
+import com.model.IssueBook;
 import com.model.User;
 
 public class Main {
@@ -18,7 +19,7 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Welcome to student library details add ");
+		System.out.println("Welcome to library details add ");
 		System.out.println(" ");
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		while(true) {
@@ -164,6 +165,32 @@ public class Main {
 					System.out.println("not up......");
 				}
 				System.out.println(v);
+				
+			}else if(c==9){
+				
+				System.out.println("Enter user id");
+				int id=Integer.parseInt(br.readLine());
+			
+				System.out.println("Enter book issuedate:");
+				String issuedate=br.readLine();
+				
+				System.out.println("Enter book returndate:");
+				String returndate=br.readLine();
+				
+				System.out.println("Enter book id:");
+				int bookid=Integer.parseInt(br.readLine());
+				
+				IssueBook i=new IssueBook(id,bookid,issuedate,returndate);
+				
+				
+				boolean answer =BookDao.insertIssueBookToDB(i);
+				if(answer) {
+					System.out.println("Success add Issuebook");
+				}else {
+					System.out.println("not success");
+				}
+				System.out.println(bk);
+			
 				
 			}
 			else if(c==0) {

@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 import com.connect.CP;
 import com.model.Book;
+import com.model.IssueBook;
 
 public class BookDao {
 
@@ -108,5 +109,33 @@ public class BookDao {
 		}
 		return t;
 	}
+	
+//	public static boolean issuebook(IssueBook is)
+//	{
+//		boolean s= false;
+//  	}
+
+	public static boolean insertIssueBookToDB(IssueBook  ib) {
+		// TODO Auto-generated method stub
+		boolean f= false;
+		try {
+			Connection con=CP.createC();
+			String q="insert into issuebook (userid,bookid,issuedate,returndate) values(?,?,?,?)";
+			PreparedStatement pstmt=con.prepareStatement(q);
+			pstmt.setInt(1, ib.getUserid());
+			pstmt.setInt(2, ib.getBookid());
+			pstmt.setString(3, ib.getIssuedate());
+			pstmt.setString(4, ib.getReturndate());
+			
+			
+			pstmt.executeUpdate();
+			f=true;
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
+	
 
 }

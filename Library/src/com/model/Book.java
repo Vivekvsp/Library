@@ -48,6 +48,18 @@ public class Book {
 	public String toString() {
 		return "UserBook [bookId=" + bookId + ", bookName=" + bookName + ", bookCode=" + bookCode + " , bookPrice=" +bookPrice+"]";
 	}
+	public String getIssueDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public String getReturnDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public String getIssueFine() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }
