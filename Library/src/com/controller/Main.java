@@ -1,35 +1,99 @@
 package com.controller;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import com.dao.StudentDao;
-import com.model.Student;
+import com.dao.BookDao;
+import com.dao.UserDao;
+import com.model.Book;
+import com.model.User;
 
 public class Main {
-
-	private static final Main st = null;
-
-	public Main(String name, String phone, String city) {
-		// TODO Auto-generated constructor stub
+	
+	private static final Main bk=null;
+	public Main(String name, String code) {
+		
 	}
-
+	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		System.out.println("Welcome to student library details add ");
 		System.out.println(" ");
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		while(true) {
-			System.out.println("Press 1 to Add student");
-			System.out.println("Press 2 to Delete student");
-			System.out.println("Press 3 to Display student");
-			System.out.println("Press 4 to Update student");
-			System.out.println("Press 5 to Exit App");
+			System.out.println("Press 1 to Add new book");
+			System.out.println("Press 2 to Delete book");
+			System.out.println("Press 3 to Display book");
+			System.out.println("Press 4 to Update book");
+			System.out.println("Press 5 to Add new member");
+			System.out.println("Press 6 to Delete member");
+			System.out.println("Press 7 to Display member");
+			System.out.println("Press 8 to Update member");
+			System.out.println("Press 9 to Issue book");
+			System.out.println("Press 0 to Exit App");
 			int c=Integer.parseInt(br.readLine());
 			
 			if(c==1) {
+				System.out.println("Enter book name:");
+				String name=br.readLine();
+				
+				System.out.println("Enter book code:");
+				String code=br.readLine();
+				
+				Book bk=new Book(name, code);
+				boolean answer =BookDao.insertBookToDB(bk);
+				if(answer) {
+					System.out.println("Success add book");
+				}else {
+					System.out.println("not success");
+				}
+				System.out.println(bk);
+			}
+			
+			
+			//Delete book
+			if(c==2) {
+				System.out.println("Enter tho bookId to delete:");
+				int bookId=Integer.parseInt(br.readLine());
+				boolean f=BookDao.deleteBooktoDB(bookId);
+				if(f) {
+					System.out.println("Delete");
+				}else {
+					System.out.println("Not delete");
+				}
+				
+			}
+			if(c==3) {
+				BookDao.showAllBook();
+			}
+			else if(c==4){
+				//update book
+				System.out.println("Enter the book Id to update :");
+				int userId =Integer.parseInt(br.readLine());
+				
+				
+				
+				System.out.println("Enter book name :");
+				String name=br.readLine(); 
+				
+				System.out.println("Enter book code :");
+				String code=br.readLine();
+				
+				
+				
+				Book v=new Book( userId,name, code);
+				boolean t=BookDao.updatebook(v);
+				
+				if(t) {
+					System.out.println("up......");
+				}else {
+					System.out.println("not up......");
+				}
+				System.out.println(v);
+				
+			}
+			if(c==5) {
 				//Add student.....
 				System.out.println("Enter user name :");
 				String name=br.readLine(); 
@@ -41,8 +105,8 @@ public class Main {
 				String city=br.readLine();
 				
 				//create student object to store student
-				Student st=new Student(name, phone, city);
-				boolean answer=StudentDao.insertStudentToDB(st);
+				User st=new User(name, phone, city);
+				boolean answer=UserDao.insertStudentToDB(st);
 				if(answer) {
 					System.out.println("student is added successfully.....");
 				}else {
@@ -50,22 +114,25 @@ public class Main {
 				}
 				System.out.println(st);
 				
-			}else if(c==2) {
+			}
+			else if(c==6) {
 				//Delete student
-				System.out.println("Enter the student Id to delete :");
+				System.out.println("Enter the user Id to delete :");
 				int userId=Integer.parseInt(br.readLine());
-				boolean f=StudentDao.deleteStudent(userId);
+				boolean f=UserDao.deleteUser(userId);
 				if(f) {
 					System.out.println("Delete......");
 				}else {
 					System.out.println("not Delete......");
 				}
 				
-			}else if(c==3) {
+			}
+			else if(c==7) {
 				//Display student
-				StudentDao.showAllStudent();
+				UserDao.showAllUser();
 				
-			}else if(c==4){
+			}
+			else if(c==8){
 				//update student
 				System.out.println("Enter the student Id to update :");
 				int userId =Integer.parseInt(br.readLine());
@@ -83,8 +150,8 @@ public class Main {
 				
 				
 				
-				Student v=new Student( userId,name, phone, city);
-				boolean t=StudentDao.updateStudent(v);
+				User v=new User( userId,name, phone, city);
+				boolean t=UserDao.updateUser(v);
 				
 				if(t) {
 					System.out.println("up......");
@@ -93,7 +160,8 @@ public class Main {
 				}
 				System.out.println(v);
 				
-			}else if(c==5) {
+			}
+			else if(c==0) {
 				//Exit App
 				break;
 				
@@ -101,7 +169,9 @@ public class Main {
 				
 			}
 		}
-		System.out.println("Thanku for using my application........");
-	}
+		
+			
+		}
+		
 
 }
