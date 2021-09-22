@@ -18,7 +18,8 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Welcome to student management app");
+		System.out.println("Welcome to student library details add ");
+		System.out.println(" ");
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		while(true) {
 			System.out.println("Press 1 to Add student");
