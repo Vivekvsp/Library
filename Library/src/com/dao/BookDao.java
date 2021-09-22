@@ -16,10 +16,11 @@ public class BookDao {
 		boolean f=false;
 		try {
 			Connection con=CP.createC();
-			String q="insert into book (bname,bcode) values(?,?)";
+			String q="insert into book (bname,bcode,bprice) values(?,?,?)";
 			PreparedStatement pstmt=con.prepareStatement(q);
 			pstmt.setString(1,  bk.getBookName());
 			pstmt.setString(2, bk.getBookCode());
+			pstmt.setString(3, bk.getBookPrice());
 			
 			pstmt.executeUpdate();
 			f=true;
@@ -67,10 +68,12 @@ public class BookDao {
 				int id =set.getInt(1);
 				String name=set.getString(2);
 				String code=set.getNString(3);
+				String price=set.getNString(4);
 				
-				System.out.println("ID : "+id);
-				System.out.println("Name : "+name);
-				System.out.println("Phone : "+code);
+				System.out.println("Book ID : "+id);
+				System.out.println("Book Name : "+name);
+				System.out.println("Book Code : "+code);
+				System.out.println("Book Price : "+price);
 				System.out.println("++++++++++++++++++++++++++++++++");
 				
 			}
@@ -88,12 +91,13 @@ public class BookDao {
 		try {
 			//jdbc code....
 			Connection con=CP.createC();
-			String q="update students set bname=? , bcode=?  where bid=?";
+			String q="update students set bname=? , bcode=? ,bprice=?  where bid=?";
 			//preparedStatement
 			PreparedStatement pstmt=con.prepareStatement(q);
 			//set the values parameters
 			pstmt.setString(1, v.getBookName());
 			pstmt.setString(2, v.getBookCode());
+			pstmt.setString(3, v.getBookPrice());
 			
 			//execute
 			pstmt.executeUpdate();

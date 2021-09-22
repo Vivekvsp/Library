@@ -12,7 +12,7 @@ import com.model.User;
 public class Main {
 	
 	private static final Main bk=null;
-	public Main(String name, String code) {
+	public Main(String name, String code, String price) {
 		
 	}
 	
@@ -41,7 +41,10 @@ public class Main {
 				System.out.println("Enter book code:");
 				String code=br.readLine();
 				
-				Book bk=new Book(name, code);
+				System.out.println("Enter book price:");
+				String price=br.readLine();
+				
+				Book bk=new Book(name, code, price);
 				boolean answer =BookDao.insertBookToDB(bk);
 				if(answer) {
 					System.out.println("Success add book");
@@ -80,9 +83,11 @@ public class Main {
 				System.out.println("Enter book code :");
 				String code=br.readLine();
 				
+				System.out.println("Enter book price :");
+				String price=br.readLine();
 				
 				
-				Book v=new Book( userId,name, code);
+				Book v=new Book( userId,name, code, price);
 				boolean t=BookDao.updatebook(v);
 				
 				if(t) {
