@@ -57,6 +57,19 @@ public class IssueBook {
 		return "IssueBook [userid=" + userid + ", bookid=" + bookid + ", issuedate=" + issuedate + ", returndate="
 				+ returndate + ", fine=" + fine + "]";
 	}
+	public String getIssueDate() {
+	// TODO Auto-generated method stub
+		return null;
+	}
+	public String getReturnDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public String getIssueFine() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 		
 

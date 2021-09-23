@@ -3,6 +3,7 @@ package com.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.connect.CP;
@@ -34,23 +35,23 @@ public class UserDao {
 		return f;
 	}
 
-	public static boolean deleteUser(int userId) {
+	public static boolean deleteUsertoDB(int userId) {
 		// TODO Auto-generated method stub
 		boolean f= false;
 		try {
-			//jdbc code....
-			Connection con=CP.createC();
-			String q="delete from user where sid=?";
-			//preparedStatement
-			PreparedStatement pstmt=con.prepareStatement(q);
-			//set the values parameters
+		Connection con=CP.createC();
+		String q="delete from user where uid=?";
+		PreparedStatement pstmt=con.prepareStatement(q);
+		try {
 			pstmt.setInt(1, userId);
-			
-			//execute
-			pstmt.executeUpdate();
-			f=true;
-			
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		pstmt.executeUpdate();
+		f=true;
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return f;
@@ -111,6 +112,8 @@ public class UserDao {
 		}
 		return t;
 	}
+
+	
 
 	
 	

@@ -4,18 +4,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import com.dao.AuthorDao;
 import com.dao.BookDao;
+import com.dao.IssueDao;
 import com.dao.UserDao;
+import com.model.Author;
 import com.model.Book;
 import com.model.IssueBook;
 import com.model.User;
 
 public class Main {
 	
-	private static final Main bk=null;
-	public Main(String name, String code, String price) {
-		
-	}
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -26,13 +25,16 @@ public class Main {
 			System.out.println("Press 1 to Add new book");
 			System.out.println("Press 2 to Delete book");
 			System.out.println("Press 3 to Display book");
-			System.out.println("Press 4 to Update book");
-			System.out.println("Press 5 to Add new member");
-			System.out.println("Press 6 to Delete member");
-			System.out.println("Press 7 to Display member");
-			System.out.println("Press 8 to Update member");
-			System.out.println("Press 9 to Issue book");
+			System.out.println("Press 4 to Author");
+			System.out.println("Press 5 to Update book");
+			System.out.println("Press 6 to Add new member");
+			System.out.println("Press 7 to Delete member");
+			System.out.println("Press 8 to Display member");
+			System.out.println("Press 9 to Update member");
+			System.out.println("Press 10 to Issue book");
 			System.out.println("Press 0 to Exit App");
+			
+			
 			int c=Integer.parseInt(br.readLine());
 			
 			if(c==1) {
@@ -45,14 +47,18 @@ public class Main {
 				System.out.println("Enter book price:");
 				String price=br.readLine();
 				
-				Book bk=new Book(name, code, price);
-				boolean answer =BookDao.insertBookToDB(bk);
+				System.out.println("Enter author id:");
+				int authorid=Integer.parseInt(br.readLine());
+				
+				Book ib=new Book(name,code,price,authorid);
+				
+				
+				boolean answer =BookDao.insertBookToDB(ib);
 				if(answer) {
 					System.out.println("Success add book");
 				}else {
 					System.out.println("not success");
 				}
-				System.out.println(bk);
 			}
 			
 			
@@ -71,7 +77,25 @@ public class Main {
 			if(c==3) {
 				BookDao.showAllBook();
 			}
-			else if(c==4){
+			if(c==4) {
+				System.out.println("Enter author name:");
+				String name=br.readLine();
+				
+				System.out.println("Enter author mobile:");
+				String code=br.readLine();
+				
+				
+				Author au=new Author(name, code);
+				boolean answer =AuthorDao.insertAuthorToDB(au);
+				if(answer) {
+					System.out.println("Success add author");
+				}else {
+					System.out.println("not success");
+				}
+				System.out.println(au);
+				System.out.println(" ");
+			}
+			else if(c==5){
 				//update book
 				System.out.println("Enter the book Id to update :");
 				int userId =Integer.parseInt(br.readLine());
@@ -87,8 +111,11 @@ public class Main {
 				System.out.println("Enter book price :");
 				String price=br.readLine();
 				
+				System.out.println("Enter author id:");
+				int authorid=Integer.parseInt(br.readLine());
 				
-				Book v=new Book( userId,name, code, price);
+				
+				Book v=new Book( userId,name, code, price, authorid);
 				boolean t=BookDao.updatebook(v);
 				
 				if(t) {
@@ -99,7 +126,7 @@ public class Main {
 				System.out.println(v);
 				
 			}
-			if(c==5) {
+			if(c==6) {
 				//Add student.....
 				System.out.println("Enter user name :");
 				String name=br.readLine(); 
@@ -121,26 +148,26 @@ public class Main {
 				System.out.println(st);
 				
 			}
-			else if(c==6) {
+			else if(c==7) {
 				//Delete student
-				System.out.println("Enter the user Id to delete :");
+				System.out.println("Enter tho userId to delete:");
 				int userId=Integer.parseInt(br.readLine());
-				boolean f=UserDao.deleteUser(userId);
+				boolean f=UserDao.deleteUsertoDB(userId);
 				if(f) {
-					System.out.println("Delete......");
+					System.out.println("Delete");
 				}else {
-					System.out.println("not Delete......");
+					System.out.println("Not delete");
 				}
 				
 			}
-			else if(c==7) {
+			else if(c==8) {
 				//Display student
 				UserDao.showAllUser();
 				
 			}
-			else if(c==8){
+			else if(c==9){
 				//update student
-				System.out.println("Enter the student Id to update :");
+				System.out.println("Enter the user Id to update :");
 				int userId =Integer.parseInt(br.readLine());
 				
 				
@@ -166,10 +193,10 @@ public class Main {
 				}
 				System.out.println(v);
 				
-			}else if(c==9){
+			}else if(c==10){
 				
 				System.out.println("Enter user id");
-				int id=Integer.parseInt(br.readLine());
+				int userid=Integer.parseInt(br.readLine());
 			
 				System.out.println("Enter book issuedate:");
 				String issuedate=br.readLine();
@@ -180,16 +207,16 @@ public class Main {
 				System.out.println("Enter book id:");
 				int bookid=Integer.parseInt(br.readLine());
 				
-				IssueBook i=new IssueBook(id,bookid,issuedate,returndate);
+				IssueBook ib=new IssueBook(userid,bookid,issuedate,returndate);
 				
 				
-				boolean answer =BookDao.insertIssueBookToDB(i);
+				boolean answer =IssueDao.insertIssueBookToDB(ib);
 				if(answer) {
 					System.out.println("Success Issuebook");
 				}else {
 					System.out.println("not success issuebook");
 				}
-				System.out.println(bk);
+				
 			
 				
 			}
