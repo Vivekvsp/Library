@@ -73,10 +73,10 @@ public class UserDao {
 				String phone=set.getNString(3);
 				String city=set.getNString("ucity");
 								
-				System.out.println("ID : "+id);
-				System.out.println("Name : "+name);
-				System.out.println("Phone : "+phone);
-				System.out.println("City : "+city);
+				System.out.println("User ID : "+id);
+				System.out.println("User Name : "+name);
+				System.out.println("User Phone : "+phone);
+				System.out.println("USer City : "+city);
 				System.out.println("++++++++++++++++++++++++++++++++");
 				
 			}

@@ -185,9 +185,9 @@ public class Main {
 				
 				boolean answer =BookDao.insertIssueBookToDB(i);
 				if(answer) {
-					System.out.println("Success add Issuebook");
+					System.out.println("Success Issuebook");
 				}else {
-					System.out.println("not success");
+					System.out.println("not success issuebook");
 				}
 				System.out.println(bk);
 			
