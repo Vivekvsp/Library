@@ -23,13 +23,13 @@ public class Main {
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		while(true) {
 			System.out.println("Press 1 to Add new book");
-			System.out.println("Press 2 to Delete book");
-			System.out.println("Press 3 to Display book");
+			System.out.println("Press 2 to Display book");
+			System.out.println("Press 3 to Delete book");
 			System.out.println("Press 4 to Author");
 			System.out.println("Press 5 to Update book");
 			System.out.println("Press 6 to Add new member");
-			System.out.println("Press 7 to Delete member");
-			System.out.println("Press 8 to Display member");
+			System.out.println("Press 7 to Display member");
+			System.out.println("Press 8 to Delete member");
 			System.out.println("Press 9 to Update member");
 			System.out.println("Press 10 to Issue book");
 			System.out.println("Press 0 to Exit App");
@@ -63,7 +63,7 @@ public class Main {
 			
 			
 			//Delete book
-			if(c==2) {
+			if(c==3) {
 				System.out.println("Enter tho bookId to delete:");
 				int bookId=Integer.parseInt(br.readLine());
 				boolean f=BookDao.deleteBooktoDB(bookId);
@@ -74,7 +74,7 @@ public class Main {
 				}
 				
 			}
-			if(c==3) {
+			if(c==2) {
 				BookDao.showAllBook();
 			}
 			if(c==4) {
@@ -148,7 +148,7 @@ public class Main {
 				System.out.println(st);
 				
 			}
-			else if(c==7) {
+			else if(c==8) {
 				//Delete student
 				System.out.println("Enter tho userId to delete:");
 				int userId=Integer.parseInt(br.readLine());
@@ -160,7 +160,7 @@ public class Main {
 				}
 				
 			}
-			else if(c==8) {
+			else if(c==7) {
 				//Display student
 				UserDao.showAllUser();
 				

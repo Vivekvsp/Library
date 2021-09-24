@@ -97,7 +97,7 @@ public class BookDao {
 		try {
 			//jdbc code....
 			Connection con=CP.createC();
-			String q="update user set bname=? , bcode=? ,bprice=? , authorid=? where bid=?";
+			String q="update book set bname=? , bcode=? ,bprice=? , authorid=? where bid=?";
 			//preparedStatement
 			PreparedStatement pstmt=con.prepareStatement(q);
 			//set the values parameters
@@ -105,7 +105,7 @@ public class BookDao {
 			pstmt.setString(2, v.getBookCode());
 			pstmt.setString(3, v.getBookPrice());
 			pstmt.setInt(4, v.getAuthorId());
-			
+			pstmt.setInt(5, v.getBookId());
 			//execute
 			pstmt.executeUpdate();
 			t=true;
